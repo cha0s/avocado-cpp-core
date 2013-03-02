@@ -1,6 +1,7 @@
 #ifndef AVOCADO_GLOBAL_H
 #define AVOCADO_GLOBAL_H
 
+#include <map>
 #include <stddef.h>
 #include <stdexcept>
 

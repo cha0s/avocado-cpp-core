@@ -3,7 +3,6 @@
 
 #include "core/avocado-global.h"
 
-#include <map>
 #include <string>
 
 #include "../Graphics/Image.h"
