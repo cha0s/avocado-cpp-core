@@ -23,14 +23,6 @@ class GraphicsService {
 
 public:
 
-	/** Standardize special key codes. */
-	struct SpecialKeyCodes {
-		int UpArrow;
-		int RightArrow;
-		int DownArrow;
-		int LeftArrow;
-	};
-
 	GraphicsService();
 	virtual ~GraphicsService();
 
@@ -38,11 +30,6 @@ public:
 	 * Close out the service.
 	 */
 	virtual void close();
-
-	/**
-	 * Standardized special keys.
-	 */
-	virtual SpecialKeyCodes specialKeyCodes() = 0;
 
 	/**
 	 * Manages the concrete %GraphicsService factory instance.
