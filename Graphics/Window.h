@@ -26,28 +26,26 @@ public:
 	struct Event {
 
 		/** Standardize mouse buttons. */
-		enum MouseButtons {
-			LeftButton   = 1,
-			MiddleButton = 2,
-			RightButton  = 3,
-			WheelUp      = 4,
-			WheelDown    = 5
-		};
+		static const std::map<std::string, int> &MouseButtons() {
 
-		/**
-		 * Thanks, Vite Falcon @ http://stackoverflow.com/a/1730798 !
-		 */
-		template<typename T, typename U>
-		class map_add_values {
-		private:
-			std::map<T,U>& m_map;
-		public:
-			map_add_values(std::map<T, U>& _map):m_map(_map) {}
-			map_add_values& operator()(const T& _key, const U& _val) {
-				m_map[_key] = _val;
-				return *this;
+			static bool initialized = false;
+			static std::map<std::string, int> m_mouseButtons;
+
+			if (!initialized) {
+				initialized = true;
+
+				(addMapValues<std::string, int>(m_mouseButtons))
+
+					("ButtonLeft", 1)
+					("ButtonMiddle", 2)
+					("ButtonRight", 3)
+					("WheelUp", 4)
+					("WheelDown", 5)
+				;
 			}
-		};
+
+			return m_mouseButtons;
+		}
 
 		/**
 		 * Standardize key codes.
@@ -56,7 +54,7 @@ public:
 		 * are no standards for non-ASCII keycodes (as far as I can tell), so
 		 * we will simply resign to standardizing between different SPIIs.
 		 */
-		static const std::map<std::string, int> &keyCodes() {
+		static const std::map<std::string, int> &KeyCodes() {
 
 			static bool initialized = false;
 			static std::map<std::string, int> m_keyCodes;
@@ -64,7 +62,7 @@ public:
 			if (!initialized) {
 				initialized = true;
 
-				(map_add_values<std::string, int>(m_keyCodes))
+				(addMapValues<std::string, int>(m_keyCodes))
 
 					("Backspace", 8)
 					("Tab", 9)
@@ -228,14 +226,14 @@ public:
 		struct MouseButtonDown {
 			int x;
 			int y;
-			MouseButtons button;
+			int button;
 		};
 
 		/** Standardize mouse button up event. */
 		struct MouseButtonUp {
 			int x;
 			int y;
-			MouseButtons button;
+			int button;
 		};
 
 		/** Standardize mouse move event. */

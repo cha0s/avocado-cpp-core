@@ -4,10 +4,27 @@
 #include <stddef.h>
 #include <stdexcept>
 
+namespace avo {
+
 /**
  * @addtogroup Global
  * @{
  */
+
+/**
+ * Thanks, Vite Falcon @ http://stackoverflow.com/a/1730798 !
+ */
+template<typename T, typename U>
+class addMapValues {
+private:
+	std::map<T,U>& m_map;
+public:
+	addMapValues(std::map<T, U>& _map):m_map(_map) {}
+	addMapValues& operator()(const T& _key, const U& _val) {
+		m_map[_key] = _val;
+		return *this;
+	}
+};
 
 /** Macro to differentiate implementSpi functions for doxygen. */
 #ifndef DOXYGEN_IS_RUNNING
@@ -32,5 +49,7 @@
 /**
  * @}
  */
+
+}
 
 #endif // AVOCADO_GLOBAL_H
