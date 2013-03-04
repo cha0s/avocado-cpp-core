@@ -93,7 +93,7 @@ void ScriptService::loadScripts(const boost::filesystem::path &path) {
 	// Gather up all the core files.
 	vector<filesystem::path> filenames = FS::findFilenames(
 		path,
-		regex(".*(\\.coffee|\\.js)$")
+		regex(".*(\\.coffee|\\.litcoffee|\\.js)$")
 	);
 
 	// Compile the core files.
