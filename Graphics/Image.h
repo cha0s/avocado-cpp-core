@@ -46,11 +46,6 @@ public:
 	Image();
 
 	/**
-	 * Build an image from memory.
-	 */
-	Image(void *data, unsigned int length);
-
-	/**
 	 * Build an image from a filename.
 	 */
 	Image(const boost::filesystem::path &uri);
@@ -236,7 +231,6 @@ public:
 	virtual ~AbstractFactory<Image>() {}
 
 	virtual Image *create() = 0;
-	virtual Image *create(void *data, unsigned int length) = 0;
 	virtual Image *create(int width, int height) = 0;
 	virtual Image *create(const boost::filesystem::path &uri) = 0;
 
