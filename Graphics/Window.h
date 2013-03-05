@@ -244,6 +244,11 @@ public:
 			int button;
 		};
 
+		/** Standardize mouse wheel movement event. */
+		struct MouseWheelMove {
+			int delta;
+		};
+
 		/** Standardize mouse move event. */
 		struct MouseMove {
 			int x;
@@ -265,6 +270,7 @@ public:
 
 		std::deque<MouseButtonDown> mouseButtonDown;
 		std::deque<MouseButtonUp> mouseButtonUp;
+		std::deque<MouseWheelMove> mouseWheelMove;
 		std::deque<MouseMove> mouseMove;
 
 		Resize resize;
@@ -287,6 +293,7 @@ public:
 
 			mouseButtonDown.clear();
 			mouseButtonUp.clear();
+			mouseWheelMove.clear();
 			mouseMove.clear();
 
 			resize.width = resize.height = -1;
@@ -303,8 +310,9 @@ public:
 			if (joyButtonUp.size() > 0) return false;
 
 			if (mouseButtonDown.size() > 0) return false;
-			if (mouseMove.size() > 0) return false;
 			if (mouseButtonUp.size() > 0) return false;
+			if (mouseWheelMove.size() > 0) return false;
+			if (mouseMove.size() > 0) return false;
 
 			if (resize.width != -1 && resize.height != -1) return false;
 
