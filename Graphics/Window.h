@@ -38,8 +38,6 @@ public:
 					("ButtonLeft", 1)
 					("ButtonMiddle", 2)
 					("ButtonRight", 3)
-					("WheelUp", 4)
-					("WheelDown", 5)
 				;
 			}
 
