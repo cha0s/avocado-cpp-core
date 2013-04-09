@@ -109,11 +109,14 @@ boost::filesystem::path qualifyPath(const boost::filesystem::path &base, const b
 
 boost::filesystem::path unqualifyPath(const boost::filesystem::path &base, const boost::filesystem::path &uri) {
 
+	std::string baseCanonical = fs::canonical(base).string();
+	std::string uriCanonical = fs::canonical(uri).string();
+
 	std::string baseString = base.string();
-	std::string uriString = fs::canonical(uri).string();
+	std::string uriString = uri.string();
 
 	std::string::size_type  pos;
-	if (std::string::npos != (pos = uriString.find(baseString))) {
+	if (std::string::npos != (pos = uriCanonical.find(baseCanonical))) {
 		return uriString.substr(baseString.size());
 	}
 	else {
