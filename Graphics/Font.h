@@ -6,7 +6,7 @@
 #include "core/FS.h"
 #include "core/ResourceManager.h"
 
-#include "Image.h"
+#include "Canvas.h"
 
 namespace avo {
 
@@ -52,7 +52,7 @@ public:
 	 * blending and draw mode, using the given sx, sy, sw, sh source rectangle
 	 * to clip.
 	 */
-	virtual void render(int x, int y, Image *destination, const std::string &text, int cx, int cy, int cw, int ch) const = 0;
+	virtual void render(int x, int y, Canvas *destination, const std::string &text, int cx, int cy, int cw, int ch) const = 0;
 
 	/**
 	 * Set the font size.

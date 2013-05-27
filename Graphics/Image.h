@@ -6,6 +6,8 @@
 #include "core/FS.h"
 #include "core/ResourceManager.h"
 
+#include "Canvas.h"
+
 namespace avo {
 
 /**
@@ -50,47 +52,7 @@ public:
 	 */
 	Image(const boost::filesystem::path &uri);
 
-	/**
-	 * Build an image to given width/height specifcations.
-	 */
-	Image(int width, int height);
-
 	virtual ~Image() {}
-
-	/**
-	 * Show the image.
-	 */
-	virtual void display() {}
-
-	/**
-	 * Draw a circle at the given x, y with the given radius. Draw it with the
-	 * given RGBA color, and with the given draw mode.
-	 */
-	virtual void drawCircle(int x, int y, int radius, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend) = 0;
-
-	/**
-	 * Draw a filled box at the given x, y with the given width, height
-	 * dimensions. Draw it with the given RGBA color, and with the given draw
-	 * mode.
-	 */
-	virtual void drawFilledBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend) = 0;
-
-	/**
-	 * Draw a line at the given x, y to the x2, y2. Draw it with the given
-	 * RGBA color, and with the given draw mode.
-	 */
-	virtual void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend) = 0;
-
-	/**
-	 * Draw a box at the given x, y with the given width, height dimensions.
-	 * Draw it with the given RGBA color, and with the given draw mode.
-	 */
-	virtual void drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend) = 0;
-
-	/**
-	 * Fill with a specified color.
-	 */
-	virtual void fill(int r, int g, int b, int a = 255) = 0;
 
 	/**
 	 * Get the height of the image.
@@ -104,26 +66,11 @@ public:
 	virtual bool isNull() const;
 
 	/**
-	 * Get the pixel color at a given x, y coordinate.
-	 */
-	virtual unsigned int pixelAt(int x, int y) const = 0;
-
-	/**
 	 * Render this image at x, y onto another image with the given alpha
 	 * blending and draw mode, using the given sx, sy, sw, sh source rectangle
 	 * to clip.
 	 */
-	virtual void render(int x, int y, Image *destination, int alpha = 255, DrawMode mode = DrawMode_Blend, int sx = 0, int sy = 0, int sw = 0, int sh = 0) const = 0;
-
-	/**
-	 * Save the image to a file.
-	 */
-	virtual void saveToFile(const boost::filesystem::path &filename) = 0;
-
-	/**
-	 * Set the pixel color at a given x, y coordinate.
-	 */
-	virtual void setPixelAt(int x, int y, unsigned int pixel) = 0;
+	virtual void render(int x, int y, Canvas *destination, int alpha = 255, DrawMode mode = DrawMode_Blend, int sx = 0, int sy = 0, int sw = 0, int sh = 0) const = 0;
 
 	/**
 	 * Get the URI (if any) used to load this image.
@@ -210,7 +157,6 @@ public:
 	virtual ~AbstractFactory<Image>() {}
 
 	virtual Image *create() = 0;
-	virtual Image *create(int width, int height) = 0;
 	virtual Image *create(const boost::filesystem::path &uri) = 0;
 
 };

@@ -4,6 +4,6 @@ HEADERS += \
 	\
 	../../../Factory.h ../../../FS.h ../../ResourceManager.h \
 	\
-	../GraphicsService.h ../Font.h ../Image.h ../Window.h
+	../GraphicsService.h ../Canvas.h ../Font.h ../Image.h ../Window.h
 
 LIBS += -lboost_system

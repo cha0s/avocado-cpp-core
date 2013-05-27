@@ -5,7 +5,8 @@
 
 #include <string>
 
-#include "../Graphics/Image.h"
+#include "Canvas.h"
+#include "Image.h"
 
 namespace avo {
 
@@ -358,6 +359,11 @@ public:
 	 * Poll events.
 	 */
 	virtual Event pollEvents() = 0;
+
+	/**
+	 * Render a Canvas onto this window.
+	 */
+	virtual void render(Canvas *working, int x, int y, int w, int h) = 0;
 
 	/**
 	 * Render an Image onto this window.
