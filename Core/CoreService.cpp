@@ -6,6 +6,9 @@ namespace avo {
 
 FactoryManager<CoreService> CoreService::factoryManager;
 
+CoreService::~CoreService() {
+}
+
 void CoreService::close() {
 }
 

@@ -28,7 +28,7 @@ class CoreService {
 
 public:
 
-	virtual ~CoreService() { }
+	virtual ~CoreService();
 
 	/**
 	 * Close out the service.
