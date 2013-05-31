@@ -52,7 +52,7 @@ public:
 	 * blending and draw mode, using the given sx, sy, sw, sh source rectangle
 	 * to clip.
 	 */
-	virtual void render(int x, int y, Canvas *destination, const std::string &text, int cx, int cy, int cw, int ch) const = 0;
+	virtual void render(int x, int y, const std::string &text, Canvas *destination, int r, int g, int b, int a, int cx, int cy, int cw, int ch) const = 0;
 
 	/**
 	 * Set the font size.
