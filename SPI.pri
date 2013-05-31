@@ -7,7 +7,7 @@ win32 {
 	debug {
 		QMAKE_POST_LINK = cp debug/$(TARGET) $${TARGET}.spii
 	}
-	release {
+	else {
 		QMAKE_POST_LINK = cp release/$(TARGET) $${TARGET}.spii
 	}
 }
@@ -28,6 +28,7 @@ HEADERS += ../../../core/avocado-global.h
 
 INCLUDEPATH += ../../.. ../../../core/deps
 
+win32:OUT_DIR = obj/win32
 unix:OUT_DIR = obj/unix
 
 OBJECTS_DIR = $$OUT_DIR
