@@ -136,16 +136,6 @@ void setExePath(const boost::filesystem::path &path) {
 	m_exePath = fs::canonical(path);
 }
 
-boost::filesystem::path m_engineRoot = boost::filesystem::path(".") / "engine";
-
-boost::filesystem::path engineRoot() {
-	return m_engineRoot;
-}
-
-void setEngineRoot(const boost::filesystem::path &engineRoot) {
-	m_engineRoot = fs::canonical(engineRoot);
-}
-
 boost::filesystem::path m_resourceRoot = boost::filesystem::path(".") / "resource";
 
 boost::filesystem::path resourceRoot() {

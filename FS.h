@@ -72,16 +72,6 @@ boost::filesystem::path exePath();
 void setExePath(const boost::filesystem::path &root);
 
 /**
- * Get the root path of engine code.
- */
-boost::filesystem::path engineRoot();
-
-/**
- * Set the root path of engine code.
- */
-void setEngineRoot(const boost::filesystem::path &engineRoot);
-
-/**
  * Get the root path of resources.
  */
 boost::filesystem::path resourceRoot();
