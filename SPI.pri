@@ -2,6 +2,7 @@ TEMPLATE = lib
 
 CONFIG -= qt
 CONFIG += dll
+CONFIG += plugin
 
 win32 {
 	debug {
