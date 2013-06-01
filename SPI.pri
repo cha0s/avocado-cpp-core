@@ -40,7 +40,6 @@ win32 {
 else {
 	LIBS += -L../../../core
 }
-
 LIBS += -lavocado
 
 win32:OUT_DIR = obj/win32
@@ -49,7 +48,3 @@ unix:OUT_DIR = obj/unix
 OBJECTS_DIR = $$OUT_DIR
 
 unix:QMAKE_CXXFLAGS += -ansi -Werror
-
-spii.path = ../../../SPII
-spii.files += $${TARGET}.spii
-INSTALLS += spii

@@ -133,7 +133,9 @@ std::string ScriptService::wrapFile(const boost::filesystem::path &filename, con
 	);
 	path = path.remove_filename() / path.stem();
 
-	std::string moduleName = path.string().substr(1);
+	std::string moduleName = algorithm::replace_all_copy(
+		path.string().substr(1), "\\", "/"
+	);
 
 	std::string wrapped = "requires_['" + moduleName + "'] = function(module, exports) {\n";
 	wrapped += preCompileCode(
