@@ -1,2 +1,8 @@
 .cproject
 .project
+Makefile
+Makefile.*
+debug
+release
+libavocado.so
+object_script.*

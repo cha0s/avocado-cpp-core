@@ -28,9 +28,27 @@ HEADERS += ../../../core/avocado-global.h
 
 INCLUDEPATH += ../../.. ../../../core/deps
 
+win32 {
+	debug {
+		LIBS += -L../../../core/debug
+	}
+	else {
+		LIBS += -L../../../core/release
+	}
+}
+else {
+	LIBS += -L../../../core
+}
+
+LIBS += -lavocado
+
 win32:OUT_DIR = obj/win32
 unix:OUT_DIR = obj/unix
 
 OBJECTS_DIR = $$OUT_DIR
 
 unix:QMAKE_CXXFLAGS += -ansi -Werror
+
+spii.path = ../../../SPII
+spii.files += $${TARGET}.spii
+INSTALLS += spii
