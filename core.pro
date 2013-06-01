@@ -41,7 +41,7 @@ INCLUDEPATH += deps ..
 
 win32 {
 	LIBS += -lboost_filesystem -lboost_regex -lboost_system
-	LIBS += -ldl
+	LIBS += -Wl,--whole-archive -ldl -Wl,--no-whole-archive
 }
 
 win32:OUT_DIR = obj/win32
