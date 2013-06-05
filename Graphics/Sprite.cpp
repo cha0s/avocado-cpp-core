@@ -23,11 +23,11 @@ void Sprite::setSource(Image *image) {
 	_image = image;
 }
 
-Canvas *Sprite::canvas() {
+Canvas *Sprite::canvas() const {
 	return _canvas;
 }
 
-Image *Sprite::image() {
+Image *Sprite::image() const {
 	return _image;
 }
 
