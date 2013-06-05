@@ -18,7 +18,7 @@ SOURCES += \
 	\
 	Script/Script.cpp Script/ScriptService.cpp \
 	Core/CoreService.cpp \
-	Graphics/GraphicsService.cpp Graphics/Canvas.cpp Graphics/Font.cpp Graphics/Image.cpp Graphics/Window.cpp \
+	Graphics/GraphicsService.cpp Graphics/Canvas.cpp Graphics/Font.cpp Graphics/Image.cpp Graphics/Sprite.cpp Graphics/Window.cpp \
 	Timing/TimingService.cpp Timing/Counter.cpp \
 	Sound/SoundService.cpp Sound/Sample.cpp Sound/Music.cpp
 
@@ -33,7 +33,7 @@ HEADERS += \
 	SpiiLoader.h \
 	Script/Script.h Script/ScriptService.h \
 	Core/CoreService.h \
-	Graphics/GraphicsService.h Graphics/Canvas.h Graphics/Font.h Graphics/Image.h Graphics/Window.h \
+	Graphics/GraphicsService.h Graphics/Canvas.h Graphics/Font.h Graphics/Image.h Graphics/Sprite.h Graphics/Window.h \
 	Timing/TimingService.h Timing/Counter.h \ 
 	Sound/SoundService.h Sound/Sample.h Sound/Music.h
 

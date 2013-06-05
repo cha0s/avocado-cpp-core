@@ -361,16 +361,6 @@ public:
 	virtual Event pollEvents() = 0;
 
 	/**
-	 * Render a Canvas onto this window.
-	 */
-	virtual void render(Canvas *working, int x, int y, int w, int h) = 0;
-
-	/**
-	 * Render an Image onto this window.
-	 */
-	virtual void render(Image *working, int x, int y, int w, int h) = 0;
-
-	/**
 	 * Set the window flags.
 	 */
 	virtual void setFlags(WindowFlags flags = Flags_Default);
@@ -394,6 +384,31 @@ public:
 	 * %Window width.
 	 */
 	int width() const;
+
+	/**
+	 * Helper function to prevent window resource mismatches.
+	 */
+	template<typename T>
+	static T *superCast(Window *window) {
+
+		if (NULL == window) {
+
+			throw std::runtime_error(
+				"NULL window pointer given to cast!"
+			);
+		}
+
+		T *specializedWindow = dynamic_cast<T *>(window);
+
+		if (!specializedWindow) {
+
+			throw std::runtime_error(
+				"There was an window type mismatch!"
+			);
+		}
+
+		return specializedWindow;
+	}
 
 	/**
 	 * Manages the concrete %Window factory instance.

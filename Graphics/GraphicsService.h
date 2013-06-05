@@ -23,6 +23,18 @@ class GraphicsService {
 
 public:
 
+	/**
+	 * How pixels are blended when during rendering operations.
+	 */
+	enum BlendMode {
+
+		/** Replace the destination pixels with the source pixels. */
+		BlendMode_Replace = 0
+
+		/** Blend the destination pixels into the source pixels. */
+		, BlendMode_Blend = 1
+	};
+
 	GraphicsService();
 	virtual ~GraphicsService();
 

@@ -6,6 +6,8 @@
 #include "core/FS.h"
 #include "core/ResourceManager.h"
 
+#include "GraphicsService.h"
+
 namespace avo {
 
 /**
@@ -28,24 +30,6 @@ class Canvas {
 public:
 
 	/**
-	 * List of drawing modes available by rendering functions.
-	 */
-	enum DrawMode {
-
-		/** Replace the destination pixels with the source pixels. */
-		DrawMode_Replace = 0
-
-		/** Blend the destination pixels into the source pixels. */
-		, DrawMode_Blend = 1
-
-		/**
-		 * Copy raw pixel data.
-		 * TODO: This is only used by SDL. Remove it from generic instances.
-		 */
-		, DrawMode_PixelCopy = 2
-	};
-
-	/**
 	 * NULL Canvas constructor.
 	 */
 	Canvas();
@@ -60,7 +44,7 @@ public:
 	 */
 	Canvas(int width, int height);
 
-	virtual ~Canvas() {}
+	virtual ~Canvas();
 
 	/**
 	 * Show the canvas.
@@ -69,28 +53,28 @@ public:
 
 	/**
 	 * Draw a circle at the given x, y with the given radius. Draw it with the
-	 * given RGBA color, and with the given draw mode.
+	 * given RGBA color, and with the given blend mode.
 	 */
-	virtual void drawCircle(int x, int y, int radius, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend) = 0;
+	virtual void drawCircle(int x, int y, int radius, int r, int g, int b, int a = 255, GraphicsService::BlendMode blendMode = GraphicsService::BlendMode_Blend) = 0;
 
 	/**
 	 * Draw a filled box at the given x, y with the given width, height
-	 * dimensions. Draw it with the given RGBA color, and with the given draw
+	 * dimensions. Draw it with the given RGBA color, and with the given blend
 	 * mode.
 	 */
-	virtual void drawFilledBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend) = 0;
+	virtual void drawFilledBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, GraphicsService::BlendMode blendMode = GraphicsService::BlendMode_Blend) = 0;
 
 	/**
 	 * Draw a line at the given x, y to the x2, y2. Draw it with the given
-	 * RGBA color, and with the given draw mode.
+	 * RGBA color, and with the given blend mode.
 	 */
-	virtual void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend) = 0;
+	virtual void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, int a = 255, GraphicsService::BlendMode blendMode = GraphicsService::BlendMode_Blend) = 0;
 
 	/**
 	 * Draw a box at the given x, y with the given width, height dimensions.
-	 * Draw it with the given RGBA color, and with the given draw mode.
+	 * Draw it with the given RGBA color, and with the given blend mode.
 	 */
-	virtual void drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, DrawMode drawMode = DrawMode_Blend) = 0;
+	virtual void drawLineBox(int x, int y, int w, int h, int r, int g, int b, int a = 255, GraphicsService::BlendMode blendMode = GraphicsService::BlendMode_Blend) = 0;
 
 	/**
 	 * Fill with a specified color.
@@ -112,13 +96,6 @@ public:
 	 * Get the pixel color at a given x, y coordinate.
 	 */
 	virtual unsigned int pixelAt(int x, int y) const = 0;
-
-	/**
-	 * Render this canvas at x, y onto another canvas with the given alpha
-	 * blending and draw mode, using the given sx, sy, sw, sh source rectangle
-	 * to clip.
-	 */
-	virtual void render(int x, int y, Canvas *destination, int alpha = 255, DrawMode mode = DrawMode_Blend, int sx = 0, int sy = 0, int sw = 0, int sh = 0) const = 0;
 
 	/**
 	 * Save the canvas to a file.
@@ -199,7 +176,6 @@ private:
 
 /**
  * @ingroup Manufacturing
- * @ingroup Resources
  * @ingroup SPI
  */
 template <>

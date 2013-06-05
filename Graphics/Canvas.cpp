@@ -10,6 +10,10 @@ Canvas::Canvas()
 {
 }
 
+Canvas::~Canvas()
+{
+}
+
 bool Canvas::isNull() const {
 	return width() != 0 && height() != 0;
 }

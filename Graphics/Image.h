@@ -28,21 +28,6 @@ class Image {
 public:
 
 	/**
-	 * List of drawing modes available by rendering functions.
-	 */
-	enum DrawMode {
-
-		/** Replace the destination pixels with the source pixels. */
-		DrawMode_Replace = 0
-
-		/** Blend the destination pixels into the source pixels. */
-		, DrawMode_Blend = 1
-
-		/** Copy raw pixel data. */
-		, DrawMode_PixelCopy = 2
-	};
-
-	/**
 	 * NULL Image constructor.
 	 */
 	Image();
@@ -64,13 +49,6 @@ public:
 	 * way to determine NULL status.
 	 */
 	virtual bool isNull() const;
-
-	/**
-	 * Render this image at x, y onto another image with the given alpha
-	 * blending and draw mode, using the given sx, sy, sw, sh source rectangle
-	 * to clip.
-	 */
-	virtual void render(int x, int y, Canvas *destination, int alpha = 255, DrawMode mode = DrawMode_Blend, int sx = 0, int sy = 0, int sw = 0, int sh = 0) const = 0;
 
 	/**
 	 * Get the URI (if any) used to load this image.
