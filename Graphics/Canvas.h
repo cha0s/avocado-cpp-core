@@ -55,26 +55,26 @@ public:
 	 * Draw a circle at the given x, y with the given radius. Draw it with the
 	 * given RGBA color, and with the given blend mode.
 	 */
-	virtual void drawCircle(int x, int y, int radius, int r, int g, int b, double a, GraphicsService::BlendMode blendMode = GraphicsService::BlendMode_Blend) = 0;
+	virtual void drawCircle(int x, int y, int radius, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) = 0;
 
 	/**
 	 * Draw a filled box at the given x, y with the given width, height
 	 * dimensions. Draw it with the given RGBA color, and with the given blend
 	 * mode.
 	 */
-	virtual void drawFilledBox(int x, int y, int w, int h, int r, int g, int b, double a, GraphicsService::BlendMode blendMode = GraphicsService::BlendMode_Blend) = 0;
+	virtual void drawFilledBox(int x, int y, int w, int h, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) = 0;
 
 	/**
 	 * Draw a line at the given x, y to the x2, y2. Draw it with the given
 	 * RGBA color, and with the given blend mode.
 	 */
-	virtual void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, double a, GraphicsService::BlendMode blendMode = GraphicsService::BlendMode_Blend) = 0;
+	virtual void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) = 0;
 
 	/**
 	 * Draw a box at the given x, y with the given width, height dimensions.
 	 * Draw it with the given RGBA color, and with the given blend mode.
 	 */
-	virtual void drawLineBox(int x, int y, int w, int h, int r, int g, int b, double a, GraphicsService::BlendMode blendMode = GraphicsService::BlendMode_Blend) = 0;
+	virtual void drawLineBox(int x, int y, int w, int h, int r, int g, int b, double a, GraphicsService::BlendMode blendMode) = 0;
 
 	/**
 	 * Fill with a specified color.
