@@ -58,7 +58,7 @@ public:
 	/**
 	 * Set the angle of rotation in degrees.
 	 */
-	virtual void setRotation(double angle) = 0;
+	virtual void setRotation(double angle, int orientX, int orientY) = 0;
 
 	/**
 	 * Set the scale factor.
