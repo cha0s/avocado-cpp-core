@@ -48,11 +48,10 @@ public:
 	virtual ~Font() {}
 
 	/**
-	 * Render this image at x, y onto another image with the given alpha
-	 * blending and draw mode, using the given sx, sy, sw, sh source rectangle
-	 * to clip.
+	 * Render text at x, y onto a Canvas with the given color and alpha
+	 * blending.
 	 */
-	virtual void render(int x, int y, const std::string &text, Canvas *destination, int r, int g, int b, int a, int cx, int cy, int cw, int ch) const = 0;
+	virtual void render(int x, int y, const std::string &text, Canvas *destination, int r, int g, int b, double a) const = 0;
 
 	/**
 	 * Set the font size.
