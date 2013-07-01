@@ -71,17 +71,9 @@ std::vector<boost::filesystem::path> findFilenames(const boost::filesystem::path
 
 std::string readString(const boost::filesystem::path &filename) {
 
-	fs::ifstream ifs(filename);
-	
-	std::string string;
-
-	ifs.seekg(0, std::ios::end);
-	string.resize(ifs.tellg());
-	ifs.seekg(0, std::ios::beg);
-	ifs.read(&string[0], string.size());
-	ifs.close();
-	
-	return string;
+	return static_cast<stringstream const&>(
+		stringstream() << in.rdbuf()
+	).str();
 }
 
 void writeString(const boost::filesystem::path &filename, const std::string &string) {
