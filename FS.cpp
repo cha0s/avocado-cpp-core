@@ -76,9 +76,9 @@ std::string readString(const boost::filesystem::path &filename) {
 	std::string string;
 
 	ifs.seekg(0, std::ios::end);
-	contents.resize(ifs.tellg());
+	string.resize(ifs.tellg());
 	ifs.seekg(0, std::ios::beg);
-	ifs.read(&contents[0], contents.size());
+	ifs.read(&string[0], string.size());
 	ifs.close();
 	
 	return string;
