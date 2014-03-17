@@ -137,7 +137,7 @@ std::string ScriptService::wrapFile(const boost::filesystem::path &filename, con
 		path.string().substr(1), "\\", "/"
 	);
 
-	std::string wrapped = "requires_['" + moduleName + "'] = function(module, exports) {\n";
+	std::string wrapped = "requires_['" + moduleName + "'] = function(module, exports, require, __dirname, __filename) {\n";
 	wrapped += preCompileCode(
 		avo::FS::readString(filename),
 		filename
