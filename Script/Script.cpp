@@ -1,8 +1,8 @@
-#include "core/avocado-global.h"
+#include "../avocado-global.h"
 
 #include "Script.h"
 
-#include "core/FS.h"
+#include "../FS.h"
 
 namespace avo {
 

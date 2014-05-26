@@ -1,7 +1,7 @@
 #ifndef AVOCADO_SPRITE_H
 #define AVOCADO_SPRITE_H
 
-#include "core/avocado-global.h"
+#include "../avocado-global.h"
 
 #include "Canvas.h"
 #include "GraphicsService.h"

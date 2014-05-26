@@ -1,4 +1,4 @@
-#include "core/avocado-global.h"
+#include "../avocado-global.h"
 
 #include <algorithm>
 #include <map>
@@ -11,7 +11,7 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/tokenizer.hpp>
 
-#include "core/FS.h"
+#include "../FS.h"
 #include "Script.h"
 #include "ScriptService.h"
 

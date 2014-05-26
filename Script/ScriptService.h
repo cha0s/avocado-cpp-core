@@ -1,12 +1,12 @@
 #ifndef AVOCADO_SCRIPTSYSTEM_H
 #define AVOCADO_SCRIPTSYSTEM_H
 
-#include "core/avocado-global.h"
+#include "../avocado-global.h"
 
 #include <string>
 #include <vector>
 
-#include "core/Factory.h"
+#include "../Factory.h"
 #include "Script.h"
 
 namespace avo {

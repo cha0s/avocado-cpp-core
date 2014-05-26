@@ -1,10 +1,10 @@
 #ifndef AVOCADO_CANVAS_H
 #define AVOCADO_CANVAS_H
 
-#include "core/avocado-global.h"
+#include "../avocado-global.h"
 
-#include "core/FS.h"
-#include "core/ResourceManager.h"
+#include "../FS.h"
+#include "../ResourceManager.h"
 
 #include "GraphicsService.h"
 

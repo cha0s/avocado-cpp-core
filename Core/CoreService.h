@@ -1,12 +1,12 @@
 #ifndef AVOCADO_CORESERVICE_H
 #define AVOCADO_CORESERVICE_H
 
-#include "core/avocado-global.h"
+#include "../avocado-global.h"
 
 #include <string>
 #include <vector>
 
-#include "core/Factory.h"
+#include "../Factory.h"
 
 namespace avo {
 

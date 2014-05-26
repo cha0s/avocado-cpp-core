@@ -1,7 +1,7 @@
 #ifndef AVOCADO_WINDOW_H
 #define AVOCADO_WINDOW_H
 
-#include "core/avocado-global.h"
+#include "../avocado-global.h"
 
 #include <string>
 
@@ -187,6 +187,8 @@ public:
 
 			return m_keyCodes;
 		}
+
+		/** TODO: proper signedness */
 
 		/** Standardize key down event. */
 		struct KeyDown {

@@ -1,9 +1,9 @@
 #ifndef AVOCADO_SOUNDSYSTEM_H
 #define AVOCADO_SOUNDSYSTEM_H
 
-#include "core/avocado-global.h"
+#include "../avocado-global.h"
 
-#include "core/Factory.h"
+#include "../Factory.h"
 
 namespace avo {
 
