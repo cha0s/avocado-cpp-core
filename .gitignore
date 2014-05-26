@@ -1,9 +1,4 @@
 .cproject
 .project
-Makefile
-Makefile.*
-debug
-obj
-release
 libavocado.so
-object_script.*
+build

@@ -1,0 +1,11 @@
+
+# Goodies in dev mode.
+if(NOT CMAKE_BUILD_TYPE STREQUAL Release)
+	set(CMAKE_BUILD_TYPE Debug)
+
+	# ALL the errors on a real OS.
+	if(UNIX)
+		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -ansi -Wall -Werror")
+	endif()
+
+endif()
