@@ -1,9 +1,8 @@
-
-project(avocado)
+cmake_minimum_required(VERSION 2.8)
 
 include(./CMakeLists-core.txt)
 
-include_directories(deps ..)
+project(avocado)
 
 add_library(avocado SHARED
 

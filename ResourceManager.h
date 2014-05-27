@@ -1,13 +1,13 @@
 #ifndef AVOCADO_RESOURCEMANAGER_H
 #define AVOCADO_RESOURCEMANAGER_H
 
-#include "../avocado-global.h"
+#include "avocado-global.h"
 
 #include <map>
 #include <string>
 
-#include "../Factory.h"
-#include "../FS.h"
+#include "Factory.h"
+#include "FS.h"
 
 namespace avo {
 
