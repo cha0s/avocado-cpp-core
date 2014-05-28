@@ -16,3 +16,8 @@ include_directories(${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR}/deps)
 function(avocado_build_shared_library_name out)
 	set(${out} ${CMAKE_SHARED_LIBRARY_PREFIX}${CMAKE_PROJECT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX} PARENT_SCOPE)
 endfunction()
+
+function(avocado_build_spii_name target)
+	set_target_properties(#{target} PROPERTIES PREFIX "")
+	set_target_properties(#{target} PROPERTIES SUFFIX ".spii")
+endfunction()
