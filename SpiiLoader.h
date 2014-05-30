@@ -96,7 +96,7 @@ public:
 		if (!implementSpi) {
 
 			throw spi_implementation_error(
-				"Couldn't find implementSpi() within " + T::name() + "'s " + implementation + " SPII."
+				"Couldn't find implementSpi() within " + T::name() + "'s " + implementation + " SPII. dlerror() says: " + dlerror()
 			);
 		}
 
