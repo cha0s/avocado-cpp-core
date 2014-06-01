@@ -3,6 +3,8 @@
 
 #include "avocado-global.h"
 
+#include <map>
+
 #include <boost/extension/shared_library.hpp>
 #include <boost/function.hpp>
 
@@ -15,18 +17,19 @@ namespace avo {
  * @{
  */
 
+typedef std::map<std::string, boost::extensions::shared_library *> LibraryMap;
+
 /**
  * %SpiiLoader handles dynamically loading SPI implementations (SPIIs). By
- * default, SPIIs are located within \<EXEPATH\>/SPII.
+ * default, SPIIs are located within [EXEPATH]/SPII.
  *
  * SPIIs follow the naming convention:
  *
  *     [SPI_NAME]-[SPI_IMPLEMENTATION].spi
  *
  * For example, by default the v8 ScriptService SPII will be
- * located at \<EXEPATH\>/SPII/ScriptService-v8.spi.
+ * located at [EXEPATH]/SPII/ScriptService-v8.spi.
  */
-template<typename T>
 class SpiiLoader {
 
 public:
@@ -45,15 +48,17 @@ public:
 
 	};
 
-	SpiiLoader<T>()
-		: m_library(NULL)
+	SpiiLoader()
+		: m_libraryMap()
 	{
 	}
 
 	~SpiiLoader() {
 
 		// Unload any implementation.
-		if (NULL != m_library) delete m_library;
+		for (LibraryMap::iterator i = m_libraryMap.begin(); i != m_libraryMap.end(); i++) {
+			delete i->second;
+		}
 	}
 
 	/**
@@ -61,14 +66,15 @@ public:
 	 * previous SPII (if any), then it'll pass T's factory manager to the
 	 * %implementSpi() function located within the SPII.
 	 */
+	template<typename T>
 	void implementSpi(const std::string &implementation, const boost::filesystem::path &path = "") {
 
 		// Only one implementation may be loaded at once. If any previous
 		// implementation exists, unload it.
-		if (NULL != m_library) delete m_library;
+		if (NULL != m_libraryMap[T::name()]) delete m_libraryMap[T::name()];
 
 		// By default, load SPIIs from
-		// <EXEPATH>/SPII/[SPI_NAME]-[SPI_IMPLEMENTATION].
+		// [EXEPATH]/SPII/[SPI_NAME]-[SPI_IMPLEMENTATION].
 		boost::filesystem::path spiPath = path;
 		if ("" == spiPath) {
 			spiPath = avo::FS::exePath();
@@ -77,12 +83,13 @@ public:
 		spiPath /= T::name() + "-" + implementation + ".spii";
 
 		// Load the shared library.
-		m_library = new boost::extensions::shared_library(
+		boost::extensions::shared_library *library;
+		library = m_libraryMap[T::name()] = new boost::extensions::shared_library(
 			spiPath.string()
 		);
 
 		// Try opening it.
-		if (!m_library->open()) {
+		if (!library->open()) {
 
 			throw spi_implementation_error(
 				"Couldn't load " + T::name() + "'s " + implementation + " SPII. dlerror() says: " + dlerror()
@@ -91,7 +98,7 @@ public:
 
 		// Extract the implementSPI function from within the shared library.
 		boost::function<void (FactoryManager<T> &)> implementSpi(
-			m_library->get<void, FactoryManager<T> &>("implementSpi")
+			library->get<void, FactoryManager<T> &>("implementSpi")
 		);
 		if (!implementSpi) {
 
@@ -106,7 +113,7 @@ public:
 
 private:
 
-	boost::extensions::shared_library *m_library;
+	LibraryMap m_libraryMap;
 
 };
 
