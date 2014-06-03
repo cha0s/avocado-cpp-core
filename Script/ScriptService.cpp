@@ -88,7 +88,7 @@ void ScriptService::initialize() {
 	coffeeCompiler->execute();
 }
 
-void ScriptService::loadScripts(const boost::filesystem::path &path) {
+void ScriptService::loadScripts(const boost::filesystem::path &path, bool wrap) {
 
 	// Gather up all the core files.
 	vector<filesystem::path> filenames = FS::findFilenames(
@@ -101,9 +101,18 @@ void ScriptService::loadScripts(const boost::filesystem::path &path) {
 
 		try {
 
+			std::string code = wrap ?
+				wrapFile(filenames[i], path)
+			:
+				preCompileCode(
+					avo::FS::readString(filenames[i]),
+					filenames[i]
+				);
+			;
+
 			// Try compiling...
 			scriptFromCode(
-				wrapFile(filenames[i], path),
+				code,
 				FS::unqualifyPath(
 					path,
 					filenames[i]

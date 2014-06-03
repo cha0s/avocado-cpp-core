@@ -84,7 +84,7 @@ public:
 	/**
 	 * Load scripts at a specified path.
 	 */
-	void loadScripts(const boost::filesystem::path &path);
+	void loadScripts(const boost::filesystem::path &path, bool wrap = true);
 
 	/**
 	 * Precompile the passed in code, inferring any precompiler from the
