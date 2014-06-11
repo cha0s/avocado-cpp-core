@@ -82,10 +82,6 @@ std::string readString(const boost::filesystem::path &filename) {
 	            std::istreambuf_iterator<char>());
 
 	return str;
-
-//	return static_cast<std::stringstream const&>(
-//		std::stringstream() << fs::ifstream(filename).rdbuf()
-//	).str();
 }
 
 void writeString(const boost::filesystem::path &filename, const std::string &string) {
