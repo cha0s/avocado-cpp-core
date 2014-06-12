@@ -55,7 +55,7 @@ public:
 
 	~SpiiLoader() {
 
-		// Unload any implementation.
+		// Unload any implementation. TODO crash on close
 		for (LibraryMap::iterator i = m_libraryMap.begin(); i != m_libraryMap.end(); i++) {
 			delete i->second;
 		}
@@ -85,7 +85,7 @@ public:
 		// Load the shared library.
 		boost::extensions::shared_library *library;
 		library = m_libraryMap[T::name()] = new boost::extensions::shared_library(
-			spiPath.string()
+			spiPath.string(), true
 		);
 
 		// Try opening it.
