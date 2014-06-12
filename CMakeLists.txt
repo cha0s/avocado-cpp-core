@@ -4,6 +4,8 @@ include(./CMakeLists-core.txt)
 
 project(avocado)
 
+find_package(Boost 1.54.0 REQUIRED filesystem regex system)
+
 add_library(avocado SHARED
 
 	FS.cpp
